@@ -6,6 +6,9 @@ public class LoopLasers : MonoBehaviour
 {
 
     public GameObject projectilePreFab;
+    public float hor;
+    public float ver;
+    
     Rigidbody2D rigidBody2D;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class LoopLasers : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         GameObject lasersObject;
         Lasers lasers; 
-        lasersObject = Instantiate(projectilePreFab, other.GetComponent<Lasers>().GetRigidBody2D().position + Vector2.up * -20f, Quaternion.identity);
+        lasersObject = Instantiate(projectilePreFab, other.GetComponent<Lasers>().GetRigidBody2D().position + Vector2.up * ver + Vector2.right * hor, Quaternion.identity);
         lasers = lasersObject.GetComponent<Lasers>();
         lasers.Shoot(800);
         Destroy(other.gameObject);
