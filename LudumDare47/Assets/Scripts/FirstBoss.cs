@@ -7,6 +7,7 @@ public class FirstBoss : MonoBehaviour
     // Start is called before the first frame update
     public GameObject Beam;
     public Character character;
+    public healthBar healthBar;
     Rigidbody2D rigidBody2D;
 
     Transform target;
@@ -27,6 +28,7 @@ public class FirstBoss : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         Beam.GetComponent<Renderer>().enabled = false;
         Beam.GetComponent<BoxCollider2D>().enabled = false;
+        healthBar.setMaxHealth(Health);
     }
 
     // Update is called once per frame
@@ -76,11 +78,7 @@ public class FirstBoss : MonoBehaviour
     }
 
     public void TakeDamage() {
-        if(damageTaken) {
-            return;
-        }
-        damageTaken = true;
-        damageTimer = 0.005f;
         Health -= 1;
+        healthBar.SetHealth(Health);
     }
 }

@@ -10,6 +10,7 @@ public class SecondBoss : MonoBehaviour
     public Character character;
     public GameObject projectilePreFab;
     public GameObject firePoint;
+    public healthBar healthBar;
 
     bool shooting;
      float shootTimer;
@@ -29,6 +30,7 @@ public class SecondBoss : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         character.GetComponent<Character>();
+        healthBar.setMaxHealth(Health);
     }
 
     // Update is called once per frame
@@ -82,5 +84,6 @@ public class SecondBoss : MonoBehaviour
     }
     public void TakeDamage() {
         Health -= 1;
+        healthBar.SetHealth(Health);
     }
 }

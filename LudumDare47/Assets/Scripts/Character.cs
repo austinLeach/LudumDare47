@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera playerCamera;
     public GameObject projectilePreFab;
     public GameObject gun;
+
+    public healthBar healthBar;
     Rigidbody2D rigidBody2D;
      public float mouseSpeed = 10f;
 
@@ -25,7 +27,7 @@ public class Character : MonoBehaviour
      public float dashSpeed = 4f;
      public float laserSpeed;
 
-     public float Health = 3;
+     public float Health = 10;
 
     Vector2 direction;
      float horizontal;
@@ -36,6 +38,7 @@ public class Character : MonoBehaviour
     void Start()
     {
        rigidBody2D = GetComponent<Rigidbody2D>();
+       healthBar.setMaxHealth(Health);
     }
     
     // Update is called once per frame
@@ -131,5 +134,6 @@ public class Character : MonoBehaviour
         damageTaken = true;
         damageTimer = 0.5f;
         Health -= 1;
+        healthBar.SetHealth(Health);
     }
 }
