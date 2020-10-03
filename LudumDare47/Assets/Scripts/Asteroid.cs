@@ -5,6 +5,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;
+    public float rotation = 30;
     public float velocityX;
     public float velocityY;
     // Start is called before the first frame update
@@ -16,6 +17,8 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0, 0, rotation * Time.deltaTime);
+
         Vector2 position = transform.position;
         position.x = position.x + velocityX * Time.deltaTime;
         position.y = position.y + velocityY * Time.deltaTime;
