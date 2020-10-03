@@ -19,7 +19,7 @@ public class Button : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         Box box = other.gameObject.GetComponent<Box>();
         if(box) {
-            Debug.Log("here");
+            Debug.Log("its a box" );
         }
     }
 }
