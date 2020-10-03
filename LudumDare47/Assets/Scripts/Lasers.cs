@@ -5,6 +5,7 @@ using UnityEngine;
 public class Lasers : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;
+    public Vector2 ShotFrom;
 
 
     // Start is called before the first frame update
@@ -19,14 +20,18 @@ public class Lasers : MonoBehaviour
         
     }
 
-    public void Shoot(float force)
+    public void Shoot(float force, Vector2 direction) 
     {
-        Vector2 direction = new Vector2(0, 1);
         rigidBody2D.AddForce(direction * force);
+        ShotFrom = direction;
     }
 
     public Rigidbody2D GetRigidBody2D()
     {
         return rigidBody2D;
+    }
+    
+    public Vector2 GetShotFrom() {
+        return ShotFrom;
     }
 }

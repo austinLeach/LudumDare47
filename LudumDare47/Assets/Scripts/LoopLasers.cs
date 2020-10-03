@@ -24,7 +24,7 @@ public class LoopLasers : MonoBehaviour
         Lasers lasers; 
         lasersObject = Instantiate(projectilePreFab, other.GetComponent<Lasers>().GetRigidBody2D().position + Vector2.up * -20f, Quaternion.identity);
         lasers = lasersObject.GetComponent<Lasers>();
-        lasers.Shoot(800);
+        lasers.Shoot(400, other.GetComponent<Lasers>().GetShotFrom());
         Destroy(other.gameObject);
     }
 }
