@@ -22,17 +22,15 @@ public class Asteroid : MonoBehaviour
         transform.position = position;
     }
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("inside on trigger");
         Lasers lasers = other.GetComponent<Lasers>();
         Character character = other.GetComponent<Character>();
         
         if (lasers != null) {
-            Debug.Log("destroying");
             Destroy(other.gameObject);
         }
         if (character != null) {
             Debug.Log("Character hit");
-            
+
         }
     }
 }

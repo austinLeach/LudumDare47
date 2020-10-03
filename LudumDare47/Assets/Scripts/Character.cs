@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class Character : MonoBehaviour
 
      bool shooting;
      float shootTimer;
+     bool damageTaken;
+     float damageTimer;
      public float laserSpeed;
+
+     public float Health = 3;
 
      Vector2 direction;
 
@@ -28,6 +33,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //movement
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 position = transform.position;
@@ -35,15 +41,27 @@ public class Character : MonoBehaviour
         position.y = position.y + 10f * vertical * Time.deltaTime;
         transform.position = position;
 
+        // mouse logic
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, mouseSpeed * Time.deltaTime);
 
         Timer(ref shooting, ref shootTimer);
+        Timer(ref damageTaken, ref damageTimer);
 
-        if (Input.GetButton("Jump")) {
+        if (Input.GetButton("Fire1")) {
             Shoot();
+        }
+
+        if(Input.GetButtonDown("Dash")) {
+            //do this tomorrow ********************************************
+        }
+
+
+
+        if (Health == 0) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -60,7 +78,7 @@ public class Character : MonoBehaviour
             lasersObject = Instantiate(projectilePreFab, rigidBody2D.position, Quaternion.identity);
         }
         lasers = lasersObject.GetComponent<Lasers>();
-        lasers.Shoot(laserSpeed, direction);  //second number is speed of projectile
+        lasers.Shoot(laserSpeed, direction, true);  //second number is speed of projectile
         shooting = true;
         shootTimer = 0.1f;
     }
@@ -76,5 +94,15 @@ public class Character : MonoBehaviour
           }
         }
         return isChanging;
+    }
+
+    public void TakeDamage() {
+        // death animation
+        if(damageTaken) {
+            return;
+        }
+        damageTaken = true;
+        damageTimer = 0.5f;
+        Health -= 1;
     }
 }

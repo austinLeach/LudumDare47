@@ -24,6 +24,12 @@ public class LoopLasers : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        BossLaser bossLaser = other.GetComponent<BossLaser>();
+        if (bossLaser) {
+            Destroy(gameObject);
+            return;
+        }
+        
         GameObject lasersObject;
         Lasers lasers; 
         lasersObject = Instantiate(projectilePreFab, other.GetComponent<Lasers>().GetRigidBody2D().position + Vector2.up * ver + Vector2.right * hor, Quaternion.identity);
