@@ -20,11 +20,11 @@ public class LoopLasers : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Hello World");
         GameObject lasersObject;
         Lasers lasers; 
         lasersObject = Instantiate(projectilePreFab, other.GetComponent<Lasers>().GetRigidBody2D().position + Vector2.up * -20f, Quaternion.identity);
         lasers = lasersObject.GetComponent<Lasers>();
         lasers.Shoot(800);
+        Destroy(other.gameObject);
     }
 }
