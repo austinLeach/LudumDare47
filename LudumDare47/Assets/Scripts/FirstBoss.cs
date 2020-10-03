@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class FirstBoss : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Beam;
@@ -38,13 +38,15 @@ public class Boss : MonoBehaviour
 
         if (shooting == false && shootingDownTime == false) {
             shooting = true;
-            shootingTimer = 1f;
+            shootingTimer = 1.3f;
             shootingDownTime = true;
             shootingDownTimer = 3f;
         }
         if (shooting == true) {
-            Beam.GetComponent<Renderer>().enabled = true;
-            Beam.GetComponent<BoxCollider2D>().enabled = true;
+            if (shootingTimer < 1f) {
+                Beam.GetComponent<Renderer>().enabled = true;
+                Beam.GetComponent<BoxCollider2D>().enabled = true;
+            }  
         }
         if (shooting == false) {
             Beam.GetComponent<Renderer>().enabled = false;
@@ -78,7 +80,7 @@ public class Boss : MonoBehaviour
             return;
         }
         damageTaken = true;
-        damageTimer = 0.02f;
+        damageTimer = 0.005f;
         Health -= 1;
     }
 }

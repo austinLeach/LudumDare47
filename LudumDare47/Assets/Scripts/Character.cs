@@ -27,7 +27,9 @@ public class Character : MonoBehaviour
 
      public float Health = 3;
 
-     Vector2 direction;
+    Vector2 direction;
+     float horizontal;
+     float vertical;
 
 
     // Start is called before the first frame update
@@ -35,17 +37,13 @@ public class Character : MonoBehaviour
     {
        rigidBody2D = GetComponent<Rigidbody2D>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         //movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector2 position = transform.position;
-        position.x = position.x + 10f * horizontal * Time.deltaTime;
-        position.y = position.y + 10f * vertical * Time.deltaTime;
-        transform.position = position;
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         // mouse logic
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -58,6 +56,8 @@ public class Character : MonoBehaviour
         Timer(ref dashing, ref dashTimer);
         Timer(ref dashCoolDown, ref dashCoolDownTimer);
 
+        
+
         if (Input.GetButton("Fire1")) {
             Shoot();
         }
@@ -65,24 +65,31 @@ public class Character : MonoBehaviour
         if(Input.GetButtonDown("Dash")) {
             if (!dashing && !dashCoolDown) {
                 dashing = true;
-                dashTimer = 0.2f;
+                dashTimer = 0.25f;
                 dashCoolDown = true;
-                dashCoolDownTimer = 1f;
+                dashCoolDownTimer = 0.5f;
             }
-            
         }
         if (dashing) {
-            rigidBody2D.velocity = new Vector2(horizontal * dashSpeed, vertical * dashSpeed);
+            Vector2 addForce= new Vector2(horizontal * dashSpeed, vertical * dashSpeed);
+            rigidBody2D.AddForce(addForce);
+            this.GetComponent<Collider2D>().enabled = false;
         }
         if (!dashing) {
             rigidBody2D.velocity = Vector2.zero;
+            this.GetComponent<Collider2D>().enabled = true;
         }
-
-
 
         if (Health == 0) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void FixedUpdate() {
+        Vector2 position = rigidBody2D.position;
+        position.x = position.x + 10f * horizontal * Time.deltaTime;
+        position.y = position.y + 10f * vertical * Time.deltaTime;
+        rigidBody2D.MovePosition(position);
     }
 
     void Shoot()
