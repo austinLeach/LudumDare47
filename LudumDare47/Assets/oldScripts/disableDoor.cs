@@ -15,6 +15,7 @@ public class disableDoor : MonoBehaviour
     {
         door.Destroy();
     }
+    
 }
 
 //Test
