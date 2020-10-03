@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439113244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 752a7d620bd29804db66a8bb150dadd6, type: 3}
   m_Name: 
@@ -1155,6 +1155,7 @@ MonoBehaviour:
   projectilePreFab: {fileID: 7937717930588036072, guid: bd400a0c94ef87947b03163a74b2d9a0, type: 3}
   gun: {fileID: 0}
   mouseSpeed: 10
+  dashSpeed: 20
   laserSpeed: 100
   Health: 500
 --- !u!212 &1486994830
@@ -1267,7 +1268,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1486994834
 MonoBehaviour:

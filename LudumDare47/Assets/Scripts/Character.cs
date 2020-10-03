@@ -17,6 +17,12 @@ public class Character : MonoBehaviour
      float shootTimer;
      bool damageTaken;
      float damageTimer;
+
+     bool dashing = false;
+     float dashTimer;
+     bool dashCoolDown;
+     float dashCoolDownTimer;
+     public float dashSpeed = 4f;
      public float laserSpeed;
 
      public float Health = 3;
@@ -49,13 +55,27 @@ public class Character : MonoBehaviour
 
         Timer(ref shooting, ref shootTimer);
         Timer(ref damageTaken, ref damageTimer);
+        Timer(ref dashing, ref dashTimer);
+        Timer(ref dashCoolDown, ref dashCoolDownTimer);
 
         if (Input.GetButton("Fire1")) {
             Shoot();
         }
 
         if(Input.GetButtonDown("Dash")) {
-            //do this tomorrow ********************************************
+            if (!dashing && !dashCoolDown) {
+                dashing = true;
+                dashTimer = 0.2f;
+                dashCoolDown = true;
+                dashCoolDownTimer = 1f;
+            }
+            
+        }
+        if (dashing) {
+            rigidBody2D.velocity = new Vector2(horizontal * dashSpeed, vertical * dashSpeed);
+        }
+        if (!dashing) {
+            rigidBody2D.velocity = Vector2.zero;
         }
 
 
