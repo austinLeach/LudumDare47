@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Controls : MonoBehaviour
+
+public class InbetweenTutorial : MonoBehaviour
 {
     public AudioSource audio;
+
     void Start() {
         audio.time = GlobalVariables.timeInAudio;
     }
-   public void PlayGame() {
-        GlobalVariables.timeInAudio = audio.time;
-        SceneManager.LoadScene("Tutorial");
+    public void PlayGame() {
+        SceneManager.LoadScene("Level1");
     }
 }

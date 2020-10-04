@@ -15,4 +15,13 @@ public class Boundary : MonoBehaviour
     {
         
     }
+
+    void OnCollisionStay2D (Collision2D other) {
+        Debug.Log("inside OnCOllision");
+        if (other.gameObject.name == "Player") {
+            Debug.Log("Inside if");
+            other.rigidbody.velocity = Vector3.zero;
+        }
+
+    }
 }
