@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
             lasersObject = Instantiate(projectilePreFab, rigidBody2D.position, Quaternion.identity);
         }
         lasers = lasersObject.GetComponent<Lasers>();
-        lasers.Shoot(laserSpeed, direction, true);  //second number is speed of projectile
+        lasers.Shoot(laserSpeed, direction, true, false);  //second number is speed of projectile
         shooting = true;
         shootTimer = 0.1f;
     }

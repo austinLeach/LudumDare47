@@ -7,7 +7,9 @@ public class Lasers : MonoBehaviour
     Rigidbody2D rigidBody2D;
     public Vector2 ShotFrom;
     bool ShotFromPlayer = false;
+    bool ShotFromBoss = false;
     float laserSpeed;
+    public bool Boss = false;
 
 
     // Start is called before the first frame update
@@ -22,10 +24,13 @@ public class Lasers : MonoBehaviour
         
     }
 
-    public void Shoot(float force, Vector2 direction, bool fromPlayer = false) 
+    public void Shoot(float force, Vector2 direction, bool fromPlayer = false, bool fromBoss = false) 
     {
         if (fromPlayer) {
             ShotFromPlayer = true;
+        }
+        if (fromBoss) {
+            ShotFromBoss = true;
         }
         rigidBody2D.AddForce(direction.normalized * force);
         ShotFrom = direction;
@@ -41,8 +46,9 @@ public class Lasers : MonoBehaviour
         return ShotFrom;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         Character character = other.GetComponent<Character>();
+        isBoss isBoss = other.GetComponent<isBoss>();
         if (character) {
             if (ShotFromPlayer) {
                 return;
@@ -50,6 +56,11 @@ public class Lasers : MonoBehaviour
             Debug.Log("Player hit");
             character.TakeDamage();
             Destroy(gameObject);
+        }
+        if (isBoss) {
+            if (ShotFromBoss) {
+                Boss = true;
+            }
         }
     }
     public float getLaserSpeed() {

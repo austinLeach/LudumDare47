@@ -66,7 +66,7 @@ public class SecondBoss : MonoBehaviour
             lasersObject = Instantiate(projectilePreFab, firePoint.transform.position, Quaternion.identity);
         }
         lasers = lasersObject.GetComponent<Lasers>();
-        lasers.Shoot(laserSpeed, direction);  //second number is speed of projectile
+        lasers.Shoot(laserSpeed, direction, false, true);  //second number is speed of projectile
         shooting = true;
         shootTimer = 0.4f;
         if (Health < 150) {
@@ -74,7 +74,7 @@ public class SecondBoss : MonoBehaviour
             laserSpeed = 1000f;
         }
     }
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         Character character = other.GetComponent<Character>();
         Lasers lasers = other.GetComponent<Lasers>();
 
@@ -82,10 +82,12 @@ public class SecondBoss : MonoBehaviour
             character.TakeDamage();
         }
         if (lasers) {
+            if (other.GetComponent<Lasers>().Boss) {
+                return;
+            }
             TakeDamage();
             Destroy(other.gameObject);
         }
-
     }
     public void TakeDamage() {
         Health -= 1;

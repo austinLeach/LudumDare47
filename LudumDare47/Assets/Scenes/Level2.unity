@@ -788,15 +788,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4095806897653985479, guid: eeda07f436b622d46938fa9c8d84eb13, type: 3}
       propertyPath: m_Offset.y
-      value: 19.557076
+      value: 19.61758
       objectReference: {fileID: 0}
     - target: {fileID: 4095806897653985479, guid: eeda07f436b622d46938fa9c8d84eb13, type: 3}
       propertyPath: m_Size.y
-      value: 15.751072
+      value: 15.630062
       objectReference: {fileID: 0}
     - target: {fileID: 4095806897653985479, guid: eeda07f436b622d46938fa9c8d84eb13, type: 3}
       propertyPath: m_Offset.x
-      value: -11.681247
+      value: -11.681248
       objectReference: {fileID: 0}
     - target: {fileID: 4095806897653985479, guid: eeda07f436b622d46938fa9c8d84eb13, type: 3}
       propertyPath: m_Size.x
@@ -1766,8 +1766,10 @@ GameObject:
   - component: {fileID: 1439113248}
   - component: {fileID: 1439113247}
   - component: {fileID: 1439113246}
-  - component: {fileID: 1439113245}
   - component: {fileID: 1439113249}
+  - component: {fileID: 1439113250}
+  - component: {fileID: 1439113251}
+  - component: {fileID: 1439113245}
   m_Layer: 0
   m_Name: spaceBaby
   m_TagString: Untagged
@@ -1788,7 +1790,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2794633}
+  m_Offset: {x: 0.020523071, y: 0.9543133}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1799,7 +1801,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.4687767, y: 2.6750689}
+  m_Size: {x: 6.973856, y: 1.0913734}
   m_EdgeRadius: 0
 --- !u!50 &1439113246
 Rigidbody2D:
@@ -1906,6 +1908,44 @@ MonoBehaviour:
   healthBar: {fileID: 173778970}
   laserSpeed: 600
   Health: 300
+--- !u!114 &1439113250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439113244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41f8fbce68d0e24eb32b50ef281cc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1439113251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439113244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000002503395, y: 0.34448004}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 3}
+    newSize: {x: 7, y: 5.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.9178104, y: 2.31104}
+  m_EdgeRadius: 0
 --- !u!1 &1486994828
 GameObject:
   m_ObjectHideFlags: 0

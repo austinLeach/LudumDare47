@@ -101,7 +101,7 @@ public class FinalBoss : MonoBehaviour
             SceneManager.LoadScene("YouWin");
         }
     }
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         Character character = other.GetComponent<Character>();
         Lasers lasers = other.GetComponent<Lasers>();
         if (character) {
@@ -130,7 +130,7 @@ public class FinalBoss : MonoBehaviour
             lasersObject = Instantiate(projectilePreFab, firePoint.transform.position, Quaternion.identity);
         }
         lasers = lasersObject.GetComponent<Lasers>();
-        lasers.Shoot(laserSpeed, direction);  //second number is speed of projectile
+        lasers.Shoot(laserSpeed, direction, false, true);  //second number is speed of projectile
         shootingLaser = true;
         shootingLaserTimer = 0.4f;
         if (Health < 100) {
