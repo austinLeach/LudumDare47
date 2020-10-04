@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     public AudioSource DashAudio;
     public AudioClip laserSound;
     public AudioClip dashSound;
+    public ParticleSystem dashEffect;
 
     Vector2 direction;
     float horizontal;
@@ -43,8 +44,9 @@ public class Character : MonoBehaviour
     void Start()
     {
         Health = GlobalVariables.Health;
-       rigidBody2D = GetComponent<Rigidbody2D>();
-       healthBar.setMaxHealth(Health);
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        healthBar.setMaxHealth(Health);
+        dashEffect.enableEmission = false;
     }
     
     // Update is called once per frame
@@ -78,7 +80,11 @@ public class Character : MonoBehaviour
                 dashCoolDown = true;
                 dashCoolDownTimer = 0.5f;
                 DashAudio.PlayOneShot(dashSound);
+                dashEffect.enableEmission = true;
             }
+        }
+        if (dashing == false) {
+            dashEffect.enableEmission = false;
         }
 
         if (Health == 0) {
