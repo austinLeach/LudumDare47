@@ -52,12 +52,15 @@ public class FirstBoss : MonoBehaviour
             shootingDownTimer = 3f;
         }
         if (shooting == true) {
+            
+            Beam.GetComponent<Renderer>().enabled = true;
+
             if (shootingTimer < 1f) {
-                Beam.GetComponent<Renderer>().enabled = true;
                 Beam.GetComponent<BoxCollider2D>().enabled = true;
                 PlayBeamSound();
             }  
         }
+
         if (shooting == false) {
             Beam.GetComponent<Renderer>().enabled = false;
             Beam.GetComponent<BoxCollider2D>().enabled = false;
@@ -101,6 +104,7 @@ public class FirstBoss : MonoBehaviour
         audio.PlayOneShot(BeamSound);
     }
     public bool inStartUp() {
+
         return shooting;
     }
 }

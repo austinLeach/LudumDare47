@@ -6,6 +6,7 @@ public class BossLaser : MonoBehaviour
 {
     public FirstBoss firstBoss;
     public FinalBoss finalBoss;
+    public Animator animator;
 
     public bool inStartUp;
     // Start is called before the first frame update
@@ -20,6 +21,17 @@ public class BossLaser : MonoBehaviour
     {
         if (firstBoss) {
             inStartUp = firstBoss.inStartUp();
+
+            if (inStartUp == true)
+            {
+                animator.SetBool("shooting", true);
+            }
+            else
+            {
+                animator.SetBool("shooting", false);
+            }
+
+
         }
         else if (finalBoss) {
             inStartUp = finalBoss.inStartUp();
