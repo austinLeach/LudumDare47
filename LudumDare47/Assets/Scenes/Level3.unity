@@ -1549,6 +1549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023bd5337100774eaf6d95974987733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBoss: {fileID: 0}
+  finalBoss: {fileID: 1439113249}
+  inStartUp: 0
 --- !u!50 &819791897
 Rigidbody2D:
   serializedVersion: 4
@@ -1693,6 +1696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023bd5337100774eaf6d95974987733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBoss: {fileID: 0}
+  finalBoss: {fileID: 1439113249}
+  inStartUp: 0
 --- !u!50 &834395853
 Rigidbody2D:
   serializedVersion: 4
@@ -2120,6 +2126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023bd5337100774eaf6d95974987733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBoss: {fileID: 0}
+  finalBoss: {fileID: 1439113249}
+  inStartUp: 0
 --- !u!50 &1078652076
 Rigidbody2D:
   serializedVersion: 4
@@ -2264,6 +2273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023bd5337100774eaf6d95974987733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBoss: {fileID: 0}
+  finalBoss: {fileID: 1439113249}
+  inStartUp: 0
 --- !u!50 &1107500523
 Rigidbody2D:
   serializedVersion: 4
@@ -2391,7 +2403,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b04551a92f47e84e8481c1f184a127f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.407
+  m_Volume: 0.268
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2631,6 +2643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023bd5337100774eaf6d95974987733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBoss: {fileID: 0}
+  finalBoss: {fileID: 1439113249}
+  inStartUp: 0
 --- !u!50 &1286476216
 Rigidbody2D:
   serializedVersion: 4
