@@ -1917,7 +1917,7 @@ MonoBehaviour:
   character: {fileID: 1486994829}
   healthBar: {fileID: 2145834853}
   animator: {fileID: 1439113251}
-  speed: 1.1
+  speed: 15
   Health: 200
   audio: {fileID: 1439113250}
   BeamSound: {fileID: 8300000, guid: 64eb861f55b4d6d4f98e340a1734573b, type: 3}

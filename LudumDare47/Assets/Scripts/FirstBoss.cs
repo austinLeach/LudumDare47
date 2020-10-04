@@ -100,4 +100,7 @@ public class FirstBoss : MonoBehaviour
         beamTimer = 3f;
         audio.PlayOneShot(BeamSound);
     }
+    public bool inStartUp() {
+        return shooting;
+    }
 }
