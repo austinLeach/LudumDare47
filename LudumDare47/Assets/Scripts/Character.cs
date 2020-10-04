@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
      float dashTimer;
      bool dashCoolDown;
      float dashCoolDownTimer;
-     public float dashSpeed = 4f;
+     public float dashSpeed = 70f;
      public float laserSpeed;
 
      public float Health = 10;
@@ -74,8 +74,9 @@ public class Character : MonoBehaviour
             }
         }
         if (dashing) {
-            Vector2 addForce= new Vector2(horizontal * dashSpeed, vertical * dashSpeed);
-            rigidBody2D.AddForce(addForce);
+            Vector2 addForce= new Vector2(horizontal, vertical);
+            
+            rigidBody2D.AddForce(addForce.normalized * dashSpeed);
             this.GetComponent<Collider2D>().enabled = false;
         }
         if (!dashing) {
