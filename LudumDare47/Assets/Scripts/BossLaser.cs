@@ -18,7 +18,12 @@ public class BossLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inStartUp = firstBoss.inStartUp();
+        if (firstBoss) {
+            inStartUp = firstBoss.inStartUp();
+        }
+        else if (finalBoss) {
+            inStartUp = finalBoss.inStartUp();
+        }   
     }
 
     void OnTriggerStay2D(Collider2D other) {

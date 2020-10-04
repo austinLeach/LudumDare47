@@ -69,23 +69,24 @@ public class FinalBoss : MonoBehaviour
 
         if (shootingBeam == false && shootingDownTime == false) {
             shootingBeam = true;
-            shootingBeamTimer = 4f;
+            shootingBeamTimer = 4.3f;
             shootingDownTime = true;
             shootingDownTimer = 12f;
             PlayBeamSound();
         }
         if (shootingBeam == true) {
-            Beam1.GetComponent<Renderer>().enabled = true;
-            Beam1.GetComponent<BoxCollider2D>().enabled = true;
-            Beam2.GetComponent<Renderer>().enabled = true;
-            Beam2.GetComponent<BoxCollider2D>().enabled = true;
-            Beam3.GetComponent<Renderer>().enabled = true;
-            Beam3.GetComponent<BoxCollider2D>().enabled = true;
-            Beam4.GetComponent<Renderer>().enabled = true;
-            Beam4.GetComponent<BoxCollider2D>().enabled = true;
-            Beam5.GetComponent<Renderer>().enabled = true;
-            Beam5.GetComponent<BoxCollider2D>().enabled = true;
-            
+            if (shootingBeamTimer < 4f) {
+                Beam1.GetComponent<Renderer>().enabled = true;
+                Beam1.GetComponent<BoxCollider2D>().enabled = true;
+                Beam2.GetComponent<Renderer>().enabled = true;
+                Beam2.GetComponent<BoxCollider2D>().enabled = true;
+                Beam3.GetComponent<Renderer>().enabled = true;
+                Beam3.GetComponent<BoxCollider2D>().enabled = true;
+                Beam4.GetComponent<Renderer>().enabled = true;
+                Beam4.GetComponent<BoxCollider2D>().enabled = true;
+                Beam5.GetComponent<Renderer>().enabled = true;
+                Beam5.GetComponent<BoxCollider2D>().enabled = true;
+            }
         }
         if (shootingBeam == false) {
             Beam1.GetComponent<Renderer>().enabled = false;
@@ -158,5 +159,8 @@ public class FinalBoss : MonoBehaviour
         beaming = true;
         beamTimer = 8f;
         audio.PlayOneShot(BeamSound);
+    }
+    public bool inStartUp() {
+        return shootingBeam;
     }
 }
