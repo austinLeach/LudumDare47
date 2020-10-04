@@ -48,7 +48,7 @@ public class SecondBoss : MonoBehaviour
 
         if (Health < 0) {
             Destroy(gameObject);
-            SceneManager.LoadScene("Level3");
+            SceneManager.LoadScene("InbetweenLevel2");
         }
     }
 

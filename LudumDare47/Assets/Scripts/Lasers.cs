@@ -53,7 +53,6 @@ public class Lasers : MonoBehaviour
             if (ShotFromPlayer) {
                 return;
             }
-            Debug.Log("Player hit");
             character.TakeDamage();
             Destroy(gameObject);
         }

@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class InbetweenLevel2 : MonoBehaviour
 {
     public void PlayGame() {
-        SceneManager.LoadScene("Controls");
-    }
-    public void QuitGame() {
-        Application.Quit();
+        SceneManager.LoadScene("Level3");
     }
 }

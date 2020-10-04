@@ -13,30 +13,31 @@ public class Character : MonoBehaviour
 
     public healthBar healthBar;
     Rigidbody2D rigidBody2D;
-     public float mouseSpeed = 10f;
+    public float mouseSpeed = 10f;
 
-     bool shooting;
-     float shootTimer;
-     bool damageTaken;
-     float damageTimer;
+    bool shooting;
+    float shootTimer;
+    bool damageTaken;
+    float damageTimer;
 
-     bool dashing = false;
-     float dashTimer;
-     bool dashCoolDown;
-     float dashCoolDownTimer;
-     public float dashSpeed = 1500f;
-     public float laserSpeed;
+    bool dashing = false;
+    float dashTimer;
+    bool dashCoolDown;
+    float dashCoolDownTimer;
+    public float dashSpeed = 1500f;
+    public float laserSpeed;
 
-     public float Health = 10;
+    public float Health = GlobalVariables.Health;
 
     Vector2 direction;
-     float horizontal;
-     float vertical;
+    float horizontal;
+    float vertical;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Health = GlobalVariables.Health;
        rigidBody2D = GetComponent<Rigidbody2D>();
        healthBar.setMaxHealth(Health);
     }
@@ -75,7 +76,8 @@ public class Character : MonoBehaviour
         }
 
         if (Health == 0) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Dead");
+            GlobalVariables.previousScene = SceneManager.GetActiveScene().name;
         }
     }
 

@@ -59,7 +59,7 @@ public class FirstBoss : MonoBehaviour
         }
         if (Health < 0) {
             Destroy(gameObject);
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("InbetweenLevel1");
         }
 
         //Debug.Log(Health);
