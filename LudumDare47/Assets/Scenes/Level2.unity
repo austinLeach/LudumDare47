@@ -1748,9 +1748,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399322799}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0035492422, y: -1.3451641, z: 0}
+  m_LocalScale: {x: 0.35492456, y: 0.35492456, z: 0.35492456}
   m_Children: []
   m_Father: {fileID: 1439113248}
   m_RootOrder: 0
@@ -1769,7 +1769,7 @@ GameObject:
   - component: {fileID: 1439113245}
   - component: {fileID: 1439113249}
   m_Layer: 0
-  m_Name: nemo
+  m_Name: spaceBaby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1788,18 +1788,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.2794633}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7, y: 5.65}
+    oldSize: {x: 8, y: 3}
     newSize: {x: 7, y: 5.65}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 5.65}
+  m_Size: {x: 7.4687767, y: 2.6750689}
   m_EdgeRadius: 0
 --- !u!50 &1439113246
 Rigidbody2D:
@@ -1862,7 +1862,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: d2f49aaaba3d1be44979e675caf55a84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a6da421a76e41a42bbbf7baf6009a87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1881,8 +1881,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439113244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 4.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.99, y: 4.15, z: 0}
+  m_LocalScale: {x: 2.8175, y: 2.8175, z: 2.8175}
   m_Children:
   - {fileID: 1399322802}
   m_Father: {fileID: 0}
@@ -2283,7 +2283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3227820017850648480, guid: 775cc4092222f9647a4d6406d316d63f, type: 3}
       propertyPath: velocityX
-      value: -1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3227820017850648480, guid: 775cc4092222f9647a4d6406d316d63f, type: 3}
       propertyPath: velocityY
@@ -2315,11 +2315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6993697072499493585, guid: 775cc4092222f9647a4d6406d316d63f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.7
+      value: 28.01
       objectReference: {fileID: 0}
     - target: {fileID: 6993697072499493585, guid: 775cc4092222f9647a4d6406d316d63f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 6993697072499493585, guid: 775cc4092222f9647a4d6406d316d63f, type: 3}
       propertyPath: m_LocalPosition.z
