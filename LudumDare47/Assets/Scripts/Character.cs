@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
         if(Input.GetButtonDown("Dash")) {
             if (!dashing && !dashCoolDown) {
                 dashing = true;
-                dashTimer = 0.25f;
+                dashTimer = 0.2f;
                 dashCoolDown = true;
                 dashCoolDownTimer = 0.5f;
             }

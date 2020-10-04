@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SecondBoss : MonoBehaviour
 {
@@ -45,10 +46,9 @@ public class SecondBoss : MonoBehaviour
 
         character.Timer(ref shooting, ref shootTimer);
 
-        Debug.Log(Health);
-
         if (Health < 0) {
             Destroy(gameObject);
+            SceneManager.LoadScene("Level3");
         }
     }
 
@@ -68,11 +68,16 @@ public class SecondBoss : MonoBehaviour
         lasers = lasersObject.GetComponent<Lasers>();
         lasers.Shoot(laserSpeed, direction);  //second number is speed of projectile
         shooting = true;
-        shootTimer = 0.3f;
+        shootTimer = 0.4f;
+        if (Health < 150) {
+            shootTimer = 0.2f;
+            laserSpeed = 1000f;
+        }
     }
     void OnTriggerEnter2D(Collider2D other) {
         Character character = other.GetComponent<Character>();
         Lasers lasers = other.GetComponent<Lasers>();
+
         if (character) {
             character.TakeDamage();
         }

@@ -7,6 +7,7 @@ public class Lasers : MonoBehaviour
     Rigidbody2D rigidBody2D;
     public Vector2 ShotFrom;
     bool ShotFromPlayer = false;
+    float laserSpeed;
 
 
     // Start is called before the first frame update
@@ -26,8 +27,9 @@ public class Lasers : MonoBehaviour
         if (fromPlayer) {
             ShotFromPlayer = true;
         }
-        rigidBody2D.AddForce(direction * force);
+        rigidBody2D.AddForce(direction.normalized * force);
         ShotFrom = direction;
+        laserSpeed = force;
     }
 
     public Rigidbody2D GetRigidBody2D()
@@ -49,5 +51,8 @@ public class Lasers : MonoBehaviour
             character.TakeDamage();
             Destroy(gameObject);
         }
+    }
+    public float getLaserSpeed() {
+        return laserSpeed;
     }
 }

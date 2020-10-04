@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class FirstBoss : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,8 +13,8 @@ public class FirstBoss : MonoBehaviour
     Transform target;
     public float speed = 1f;
 
-    bool shooting = false;
-    float shootingTimer;
+    bool shooting = true;
+    float shootingTimer = 2f;
     bool shootingDownTime = false;
     float shootingDownTimer;
 
@@ -59,6 +59,7 @@ public class FirstBoss : MonoBehaviour
         }
         if (Health < 0) {
             Destroy(gameObject);
+            SceneManager.LoadScene("Level2");
         }
 
         //Debug.Log(Health);
@@ -74,7 +75,6 @@ public class FirstBoss : MonoBehaviour
             TakeDamage();
             Destroy(other.gameObject);
         }
-
     }
 
     public void TakeDamage() {
