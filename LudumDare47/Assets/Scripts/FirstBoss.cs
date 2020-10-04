@@ -8,6 +8,7 @@ public class FirstBoss : MonoBehaviour
     public GameObject Beam;
     public Character character;
     public healthBar healthBar;
+    public Animator animator;
     Rigidbody2D rigidBody2D;
 
     Transform target;
@@ -44,6 +45,7 @@ public class FirstBoss : MonoBehaviour
         character.Timer(ref beaming, ref beamTimer);
 
         if (shooting == false && shootingDownTime == false) {
+            animator.SetBool("shooting", true);
             shooting = true;
             shootingTimer = 1.3f;
             shootingDownTime = true;
@@ -59,7 +61,7 @@ public class FirstBoss : MonoBehaviour
         if (shooting == false) {
             Beam.GetComponent<Renderer>().enabled = false;
             Beam.GetComponent<BoxCollider2D>().enabled = false;
-
+            animator.SetBool("shooting", false);
             target = character.transform;
             transform.position = Vector2.MoveTowards (transform.position, new Vector2(target.position.x, transform.position.y), speed*Time.deltaTime);
         }
