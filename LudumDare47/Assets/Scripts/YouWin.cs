@@ -10,6 +10,8 @@ public class YouWin : MonoBehaviour
     }
     public void MainMenu() {
         GlobalVariables.timeInAudio = audio.time;
+        GlobalVariables.EasyMode = false;
+        GlobalVariables.Health = 10f;
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -29,6 +29,11 @@ public class Character : MonoBehaviour
 
     public float Health = GlobalVariables.Health;
 
+    public AudioSource LaserAudio;
+    public AudioSource DashAudio;
+    public AudioClip laserSound;
+    public AudioClip dashSound;
+
     Vector2 direction;
     float horizontal;
     float vertical;
@@ -72,6 +77,7 @@ public class Character : MonoBehaviour
                 dashTimer = 0.2f;
                 dashCoolDown = true;
                 dashCoolDownTimer = 0.5f;
+                DashAudio.PlayOneShot(dashSound);
             }
         }
 
@@ -115,6 +121,7 @@ public class Character : MonoBehaviour
         lasers.Shoot(laserSpeed, direction, true, false);  //second number is speed of projectile
         shooting = true;
         shootTimer = 0.1f;
+        LaserAudio.PlayOneShot(laserSound);
     }
 
     public bool Timer(ref bool isChanging, ref float timer)

@@ -17,11 +17,15 @@ public class FirstBoss : MonoBehaviour
     float shootingTimer = 2f;
     bool shootingDownTime = false;
     float shootingDownTimer;
+    bool beaming = false;
+    float beamTimer = 3f;
 
     bool damageTaken = false;
     float damageTimer;
 
     public float Health = 500;
+    public AudioSource audio;
+    public AudioClip BeamSound;
     void Start()
     {
         character.GetComponent<Character>();
@@ -37,6 +41,7 @@ public class FirstBoss : MonoBehaviour
         character.Timer(ref shooting, ref shootingTimer);
         character.Timer(ref shootingDownTime, ref shootingDownTimer);
         character.Timer(ref damageTaken, ref damageTimer);
+        character.Timer(ref beaming, ref beamTimer);
 
         if (shooting == false && shootingDownTime == false) {
             shooting = true;
@@ -48,6 +53,7 @@ public class FirstBoss : MonoBehaviour
             if (shootingTimer < 1f) {
                 Beam.GetComponent<Renderer>().enabled = true;
                 Beam.GetComponent<BoxCollider2D>().enabled = true;
+                PlayBeamSound();
             }  
         }
         if (shooting == false) {
@@ -80,5 +86,13 @@ public class FirstBoss : MonoBehaviour
     public void TakeDamage() {
         Health -= 1;
         healthBar.SetHealth(Health);
+    }
+    void PlayBeamSound() {
+        if (beaming) {
+            return;
+        }
+        beaming = true;
+        beamTimer = 3f;
+        audio.PlayOneShot(BeamSound);
     }
 }

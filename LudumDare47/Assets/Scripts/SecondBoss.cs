@@ -23,6 +23,9 @@ public class SecondBoss : MonoBehaviour
 
     public float Health = 300;
 
+    public AudioSource audio;
+    public AudioClip LaserSound;
+
     Vector2 direction;
 
     
@@ -69,9 +72,14 @@ public class SecondBoss : MonoBehaviour
         lasers.Shoot(laserSpeed, direction, false, true);  //second number is speed of projectile
         shooting = true;
         shootTimer = 0.4f;
-        if (Health < 150) {
+        audio.PlayOneShot(LaserSound);
+        if (Health < 200) {
             shootTimer = 0.2f;
             laserSpeed = 1000f;
+        }
+        if (Health < 100) {
+            shootTimer = 0.1f;
+            laserSpeed = 1200f;
         }
     }
     void OnTriggerStay2D(Collider2D other) {

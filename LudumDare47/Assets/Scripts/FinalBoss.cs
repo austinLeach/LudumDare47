@@ -25,8 +25,13 @@ public class FinalBoss : MonoBehaviour
     float shootingBeamTimer = 4f;
     bool shootingDownTime = true;
     float shootingDownTimer = 4f;
+    bool beaming = false;
+    float beamTimer = 3f;
 
     public float Health = 500;
+    public AudioSource audio;
+    public AudioClip BeamSound;
+    public AudioClip LaserSound;
     Vector2 direction;
     Transform target;
 
@@ -55,6 +60,7 @@ public class FinalBoss : MonoBehaviour
         character.Timer(ref shootingBeam, ref shootingBeamTimer);
         character.Timer(ref shootingLaser, ref shootingLaserTimer);
         character.Timer(ref shootingDownTime, ref shootingDownTimer);
+        character.Timer(ref beaming, ref beamTimer);
 
         target = character.transform;
         Vector3 fds = new Vector3(0,0,1);
@@ -66,6 +72,7 @@ public class FinalBoss : MonoBehaviour
             shootingBeamTimer = 4f;
             shootingDownTime = true;
             shootingDownTimer = 12f;
+            PlayBeamSound();
         }
         if (shootingBeam == true) {
             Beam1.GetComponent<Renderer>().enabled = true;
@@ -133,9 +140,18 @@ public class FinalBoss : MonoBehaviour
         lasers.Shoot(laserSpeed, direction, false, true);  //second number is speed of projectile
         shootingLaser = true;
         shootingLaserTimer = 0.4f;
+        audio.PlayOneShot(LaserSound);
         if (Health < 100) {
             shootingLaserTimer = 0.2f;
             laserSpeed = 1000f;
         }
+    }
+    void PlayBeamSound() {
+        if (beaming) {
+            return;
+        }
+        beaming = true;
+        beamTimer = 8f;
+        audio.PlayOneShot(BeamSound);
     }
 }
