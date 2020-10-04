@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Boss : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class FirstBoss : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Beam;
     public Character character;
+    public healthBar healthBar;
     Rigidbody2D rigidBody2D;
 
     Transform target;
     public float speed = 1f;
 
-    bool shooting = false;
-    float shootingTimer;
+    bool shooting = true;
+    float shootingTimer = 2f;
     bool shootingDownTime = false;
     float shootingDownTimer;
 
@@ -27,6 +28,7 @@ public class Boss : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         Beam.GetComponent<Renderer>().enabled = false;
         Beam.GetComponent<BoxCollider2D>().enabled = false;
+        healthBar.setMaxHealth(Health);
     }
 
     // Update is called once per frame
@@ -38,13 +40,15 @@ public class Boss : MonoBehaviour
 
         if (shooting == false && shootingDownTime == false) {
             shooting = true;
-            shootingTimer = 1f;
+            shootingTimer = 1.3f;
             shootingDownTime = true;
             shootingDownTimer = 3f;
         }
         if (shooting == true) {
-            Beam.GetComponent<Renderer>().enabled = true;
-            Beam.GetComponent<BoxCollider2D>().enabled = true;
+            if (shootingTimer < 1f) {
+                Beam.GetComponent<Renderer>().enabled = true;
+                Beam.GetComponent<BoxCollider2D>().enabled = true;
+            }  
         }
         if (shooting == false) {
             Beam.GetComponent<Renderer>().enabled = false;
@@ -55,6 +59,7 @@ public class Boss : MonoBehaviour
         }
         if (Health < 0) {
             Destroy(gameObject);
+            SceneManager.LoadScene("Level2");
         }
 
         //Debug.Log(Health);
@@ -70,15 +75,10 @@ public class Boss : MonoBehaviour
             TakeDamage();
             Destroy(other.gameObject);
         }
-
     }
 
     public void TakeDamage() {
-        if(damageTaken) {
-            return;
-        }
-        damageTaken = true;
-        damageTimer = 0.02f;
         Health -= 1;
+        healthBar.SetHealth(Health);
     }
 }

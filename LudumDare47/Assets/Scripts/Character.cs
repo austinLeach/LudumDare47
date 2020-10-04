@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera playerCamera;
     public GameObject projectilePreFab;
     public GameObject gun;
+
+    public healthBar healthBar;
     Rigidbody2D rigidBody2D;
      public float mouseSpeed = 10f;
 
@@ -22,30 +24,29 @@ public class Character : MonoBehaviour
      float dashTimer;
      bool dashCoolDown;
      float dashCoolDownTimer;
-     public float dashSpeed = 4f;
+     public float dashSpeed = 70f;
      public float laserSpeed;
 
-     public float Health = 3;
+     public float Health = 10;
 
-     Vector2 direction;
+    Vector2 direction;
+     float horizontal;
+     float vertical;
 
 
     // Start is called before the first frame update
     void Start()
     {
        rigidBody2D = GetComponent<Rigidbody2D>();
+       healthBar.setMaxHealth(Health);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         //movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector2 position = transform.position;
-        position.x = position.x + 10f * horizontal * Time.deltaTime;
-        position.y = position.y + 10f * vertical * Time.deltaTime;
-        transform.position = position;
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         // mouse logic
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -58,6 +59,8 @@ public class Character : MonoBehaviour
         Timer(ref dashing, ref dashTimer);
         Timer(ref dashCoolDown, ref dashCoolDownTimer);
 
+        
+
         if (Input.GetButton("Fire1")) {
             Shoot();
         }
@@ -67,22 +70,30 @@ public class Character : MonoBehaviour
                 dashing = true;
                 dashTimer = 0.2f;
                 dashCoolDown = true;
-                dashCoolDownTimer = 1f;
+                dashCoolDownTimer = 0.5f;
             }
-            
         }
         if (dashing) {
-            rigidBody2D.velocity = new Vector2(horizontal * dashSpeed, vertical * dashSpeed);
+            Vector2 addForce= new Vector2(horizontal, vertical);
+            
+            rigidBody2D.AddForce(addForce.normalized * dashSpeed);
+            this.GetComponent<Collider2D>().enabled = false;
         }
         if (!dashing) {
             rigidBody2D.velocity = Vector2.zero;
+            this.GetComponent<Collider2D>().enabled = true;
         }
-
-
 
         if (Health == 0) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void FixedUpdate() {
+        Vector2 position = rigidBody2D.position;
+        position.x = position.x + 10f * horizontal * Time.deltaTime;
+        position.y = position.y + 10f * vertical * Time.deltaTime;
+        rigidBody2D.MovePosition(position);
     }
 
     void Shoot()
@@ -124,5 +135,6 @@ public class Character : MonoBehaviour
         damageTaken = true;
         damageTimer = 0.5f;
         Health -= 1;
+        healthBar.SetHealth(Health);
     }
 }
