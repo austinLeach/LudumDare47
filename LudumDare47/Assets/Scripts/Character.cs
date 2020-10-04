@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
      float dashTimer;
      bool dashCoolDown;
      float dashCoolDownTimer;
-     public float dashSpeed = 70f;
+     public float dashSpeed = 1500f;
      public float laserSpeed;
 
      public float Health = 10;
@@ -73,16 +73,6 @@ public class Character : MonoBehaviour
                 dashCoolDownTimer = 0.5f;
             }
         }
-        if (dashing) {
-            Vector2 addForce= new Vector2(horizontal, vertical);
-            
-            rigidBody2D.AddForce(addForce.normalized * dashSpeed);
-            this.GetComponent<Collider2D>().enabled = false;
-        }
-        if (!dashing) {
-            rigidBody2D.velocity = Vector2.zero;
-            this.GetComponent<Collider2D>().enabled = true;
-        }
 
         if (Health == 0) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -94,6 +84,17 @@ public class Character : MonoBehaviour
         position.x = position.x + 10f * horizontal * Time.deltaTime;
         position.y = position.y + 10f * vertical * Time.deltaTime;
         rigidBody2D.MovePosition(position);
+
+        if (dashing) {
+            Vector2 addForce= new Vector2(horizontal, vertical);
+            
+            rigidBody2D.AddForce(addForce.normalized * dashSpeed);
+            this.GetComponent<Collider2D>().enabled = false;
+        }
+        if (!dashing) {
+            rigidBody2D.velocity = Vector2.zero;
+            this.GetComponent<Collider2D>().enabled = true;
+        }
     }
 
     void Shoot()

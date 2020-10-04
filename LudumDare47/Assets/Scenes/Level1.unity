@@ -1927,7 +1927,7 @@ MonoBehaviour:
   gun: {fileID: 0}
   healthBar: {fileID: 288743061}
   mouseSpeed: 10
-  dashSpeed: 70
+  dashSpeed: 1000
   laserSpeed: 1000
   Health: 10
 --- !u!212 &1486994830
