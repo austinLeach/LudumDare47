@@ -11,7 +11,7 @@ public class FirstBoss : MonoBehaviour
     Rigidbody2D rigidBody2D;
 
     Transform target;
-    public float speed = 1f;
+    public float speed = 15f;
 
     bool shooting = true;
     float shootingTimer = 2f;
@@ -61,7 +61,10 @@ public class FirstBoss : MonoBehaviour
             Beam.GetComponent<BoxCollider2D>().enabled = false;
 
             target = character.transform;
-            transform.position = Vector2.MoveTowards (transform.position, new Vector2(target.position.x, transform.position.y), 15*Time.deltaTime);
+            transform.position = Vector2.MoveTowards (transform.position, new Vector2(target.position.x, transform.position.y), speed*Time.deltaTime);
+        }
+        if (Health < 50 ) {
+            speed = 25f;
         }
         if (Health < 0) {
             Destroy(gameObject);

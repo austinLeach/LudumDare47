@@ -99,8 +99,13 @@ public class FinalBoss : MonoBehaviour
             Beam5.GetComponent<Renderer>().enabled = false;
             Beam5.GetComponent<BoxCollider2D>().enabled = false;
         }
-        Debug.Log(shootingDownTimer);
-        if (shootingDownTimer < 7 && shootingDownTimer > 1) {
+        if (Health < 100) {
+            Shoot();
+        }
+        else if (shootingDownTimer < 7 && shootingDownTimer > 1) {
+            Shoot();
+        }
+        if (Health < 50) {
             Shoot();
         }
         if (Health < 0) {
@@ -141,7 +146,7 @@ public class FinalBoss : MonoBehaviour
         shootingLaser = true;
         shootingLaserTimer = 0.4f;
         audio.PlayOneShot(LaserSound);
-        if (Health < 100) {
+        if (Health < 200) {
             shootingLaserTimer = 0.2f;
             laserSpeed = 1000f;
         }

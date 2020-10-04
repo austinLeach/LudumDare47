@@ -1668,7 +1668,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b04551a92f47e84e8481c1f184a127f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.359
+  m_Volume: 0.269
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   Beam: {fileID: 23748662}
   character: {fileID: 1486994829}
   healthBar: {fileID: 2145834853}
-  speed: 1.1
+  speed: 15
   Health: 200
   audio: {fileID: 1439113250}
   BeamSound: {fileID: 8300000, guid: 64eb861f55b4d6d4f98e340a1734573b, type: 3}
