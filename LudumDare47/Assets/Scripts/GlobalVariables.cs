@@ -7,4 +7,5 @@ public static class GlobalVariables
     public static float Health = 10f;
     public static bool EasyMode = false;
     public static string previousScene;
+    public static float timeInAudio = 0f;
 }

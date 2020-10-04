@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public AudioSource audio;
+    void Start() {
+        audio.time = GlobalVariables.timeInAudio;
+    }
     public void PlayGame() {
+        GlobalVariables.timeInAudio = audio.time;
         SceneManager.LoadScene("Controls");
     }
     public void QuitGame() {

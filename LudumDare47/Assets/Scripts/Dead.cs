@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Dead : MonoBehaviour
 {
+    public AudioSource audio;
+    void Start()
+    {
+        audio.time = 100f;
+    }
     public void TryAgain() {
         SceneManager.LoadScene(GlobalVariables.previousScene);
     }
