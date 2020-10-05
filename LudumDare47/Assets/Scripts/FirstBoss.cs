@@ -79,7 +79,7 @@ public class FirstBoss : MonoBehaviour
         //Debug.Log(Health);
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         Character character = other.GetComponent<Character>();
         Lasers lasers = other.GetComponent<Lasers>();
         if (character) {
