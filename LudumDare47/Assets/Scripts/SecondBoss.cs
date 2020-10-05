@@ -16,9 +16,6 @@ public class SecondBoss : MonoBehaviour
     bool shooting;
      float shootTimer;
 
-     bool damageTaken = false;
-    float damageTimer;
-
     public float laserSpeed;
 
     public float Health = 300;

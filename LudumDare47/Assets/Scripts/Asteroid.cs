@@ -24,7 +24,7 @@ public class Asteroid : MonoBehaviour
         position.y = position.y + velocityY * Time.deltaTime;
         transform.position = position;
     }
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         Lasers lasers = other.GetComponent<Lasers>();
         Character character = other.GetComponent<Character>();
         
