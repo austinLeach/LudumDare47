@@ -47,9 +47,9 @@ public class FirstBoss : MonoBehaviour
         if (shooting == false && shootingDownTime == false) {
             animator.SetBool("shooting", true);
             shooting = true;
-            shootingTimer = 1.3f;
+            shootingTimer = 1.4f;
             shootingDownTime = true;
-            shootingDownTimer = 3f;
+            shootingDownTimer = 3.5f;
         }
         if (shooting == true) {
             

@@ -35,7 +35,7 @@ public class FinalBoss : MonoBehaviour
     Vector2 direction;
     Transform target;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,32 +63,40 @@ public class FinalBoss : MonoBehaviour
         character.Timer(ref beaming, ref beamTimer);
 
         target = character.transform;
-        Vector3 fds = new Vector3(0,0,1);
+        Vector3 fds = new Vector3(0, 0, 1);
         firePoint.transform.LookAt(target, fds);
 
 
-        if (shootingBeam == false && shootingDownTime == false) {
+        if (shootingBeam == false && shootingDownTime == false)
+        {
             shootingBeam = true;
-            shootingBeamTimer = 4.3f;
+            shootingBeamTimer = 4.5f;
             shootingDownTime = true;
             shootingDownTimer = 12f;
-            PlayBeamSound();
+            
         }
-        if (shootingBeam == true) {
-            if (shootingBeamTimer < 4f) {
-                Beam1.GetComponent<Renderer>().enabled = true;
+        if (shootingBeam == true)
+        {
+
+            Beam1.GetComponent<Renderer>().enabled = true;
+            Beam2.GetComponent<Renderer>().enabled = true;
+            Beam3.GetComponent<Renderer>().enabled = true;
+            Beam4.GetComponent<Renderer>().enabled = true;
+            Beam5.GetComponent<Renderer>().enabled = true;
+
+
+            if (shootingBeamTimer < 4f)
+            {
+                PlayBeamSound();
                 Beam1.GetComponent<BoxCollider2D>().enabled = true;
-                Beam2.GetComponent<Renderer>().enabled = true;
                 Beam2.GetComponent<BoxCollider2D>().enabled = true;
-                Beam3.GetComponent<Renderer>().enabled = true;
                 Beam3.GetComponent<BoxCollider2D>().enabled = true;
-                Beam4.GetComponent<Renderer>().enabled = true;
                 Beam4.GetComponent<BoxCollider2D>().enabled = true;
-                Beam5.GetComponent<Renderer>().enabled = true;
                 Beam5.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
-        if (shootingBeam == false) {
+        if (shootingBeam == false)
+        {
             Beam1.GetComponent<Renderer>().enabled = false;
             Beam1.GetComponent<BoxCollider2D>().enabled = false;
             Beam2.GetComponent<Renderer>().enabled = false;
@@ -100,32 +108,40 @@ public class FinalBoss : MonoBehaviour
             Beam5.GetComponent<Renderer>().enabled = false;
             Beam5.GetComponent<BoxCollider2D>().enabled = false;
         }
-        if (Health < 100) {
+        if (Health < 100)
+        {
             Shoot();
         }
-        else if (shootingDownTimer < 7 && shootingDownTimer > 1) {
+        else if (shootingDownTimer < 7 && shootingDownTimer > 1)
+        {
             Shoot();
         }
-        if (Health < 50) {
+        if (Health < 50)
+        {
             Shoot();
         }
-        if (Health < 0) {
+        if (Health < 0)
+        {
             Destroy(gameObject);
             SceneManager.LoadScene("YouWin");
         }
     }
-    void OnTriggerStay2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other)
+    {
         Character character = other.GetComponent<Character>();
         Lasers lasers = other.GetComponent<Lasers>();
-        if (character) {
+        if (character)
+        {
             character.TakeDamage();
         }
-        if (lasers) {
+        if (lasers)
+        {
             TakeDamage();
             Destroy(other.gameObject);
         }
     }
-    public void TakeDamage() {
+    public void TakeDamage()
+    {
         Health -= 1;
         healthBar.SetHealth(Health);
     }
@@ -147,20 +163,24 @@ public class FinalBoss : MonoBehaviour
         shootingLaser = true;
         shootingLaserTimer = 0.4f;
         audio.PlayOneShot(LaserSound);
-        if (Health < 200) {
+        if (Health < 200)
+        {
             shootingLaserTimer = 0.2f;
             laserSpeed = 1000f;
         }
     }
-    void PlayBeamSound() {
-        if (beaming) {
+    void PlayBeamSound()
+    {
+        if (beaming)
+        {
             return;
         }
         beaming = true;
         beamTimer = 8f;
         audio.PlayOneShot(BeamSound);
     }
-    public bool inStartUp() {
+    public bool inStartUp()
+    {
         return shootingBeam;
     }
 }

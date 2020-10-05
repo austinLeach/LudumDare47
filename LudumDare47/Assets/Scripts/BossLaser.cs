@@ -35,6 +35,16 @@ public class BossLaser : MonoBehaviour
         }
         else if (finalBoss) {
             inStartUp = finalBoss.inStartUp();
+
+            if (inStartUp == true)
+            {
+                animator.SetBool("inStartUp", true);
+            }
+            else
+            {
+                animator.SetBool("inStartUp", false);
+            }
+
         }   
     }
 
